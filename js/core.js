@@ -106,6 +106,7 @@ $(document).ready(function()
         // If a previous selection changes after a subsequent round has been set, capture the target value and label and
         // clear them from all subsequent rounds.
         target_label = target_input.prev('label');
+        /*
         if(target_input.val() != '' && target_label != '')
         {
             var prev_target_val = target_input.val();
@@ -113,6 +114,7 @@ $(document).ready(function()
             $('input[value=prev_target_val]').not(target_input).attr('value', '');
             $('label:contains(prev_target_label)').not(target_label).text('');
         }
+        */
         target_input.attr('value', selected_val);
         target_label.text(selected_team_name);
         
