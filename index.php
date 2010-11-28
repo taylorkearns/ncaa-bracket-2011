@@ -9,14 +9,15 @@
     <title>ncaa bracket 2011</title>
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="">
 
     <style type="text/css">
         body { font-size: 62.5%; }
-        div.round { float: left; width: 200px; }
+        div.round { float: left; width: 100px; height: 600px; overflow: auto; margin-right: 30px; }
         div.champion {float: right; margin-right: 30px; }
         div.matchup { margin-bottom: 10px; }
-        form label { display: block; }
+        form label { display: block; padding: 2px; margin-bottom: 2px; border: 1px solid #ccc; background: #eee; width: 40px; }
+        form label:hover { background: #ccc; }
         h2 { font-size: 1.2em; }
     </style>
     
@@ -29,6 +30,7 @@
         
         <div class="round">
             <h2>Round One</h2>
+            <br /><a href="#" class="click-all">Click all</a>
             <!-- Left side of bracket -->
             <div class="rd1 matchup">    
                 <label for="rd1-matchup1-team1">KU</label><input type="hidden" id="rd1-matchup1-team1" value="ku" />    
@@ -163,6 +165,7 @@
         
         <div class="round">
             <h2>Round Two</h2>
+            <br /><a href="#" class="click-all">Click all</a>
             <!-- Left side of bracket -->
             <div class="rd2 matchup">
                 <label for="rd2-matchup1-team1"></label><input type="hidden" id="rd2-matchup1-team1" value="" />
@@ -233,6 +236,7 @@
         
         <div class="round">
             <h2>Sweet Sixteen</h2>
+            <br /><a href="#" class="click-all">Click all</a>
             <!-- Left side of bracket -->
             <div class="sweet16 matchup">
                 <label for="sweet16-matchup1-team1"></label><input type="hidden" id="sweet16-matchup1-team1" value="" />
@@ -271,6 +275,7 @@
         
         <div class="round">
             <h2>Elite Eight</h2>
+            <br /><a href="#" class="click-all">Click all</a>
             <!-- left side of bracket -->
             <div class="elite8 matchup">
                 <label for="elite8-matchup1-team1"></label><input type="hidden" id="elite8-matchup1-team1" value="" />
@@ -293,6 +298,7 @@
         
         <div class="round">
             <h2>Final Four</h2>
+            <br /><a href="#" class="click-all">Click all</a>
             <!-- Left side of bracket -->
             <div class="final4 matchup">
                 <label for="final4-matchup1-team1"></label><input type="hidden" id="final4-matchup1-team1" value="" />
@@ -307,15 +313,17 @@
         
         <div class="round">
             <h2>Championship</h2>
+            <br /><a href="#" class="click-all">Click all</a>
             <div class="championship matchup">
-                <label for="championship-team1"></label><input type="hidden" id="championship-team1" value="" />
-                <label for="championship-team2"></label><input type="hidden" id="championship-team2" value="" />
+                <label for="championship-matchup1-team1"></label><input type="hidden" id="championship-matchup1-team1" value="" />
+                <label for="championship-matchup1-team2"></label><input type="hidden" id="championship-matchup1-team2" value="" />
             </div>
         </div><!-- End .round -->
         
         <div class="champion">
             <h2>Champion</h2>
-            <label for="champion"></label><input type="hidden" id="champion" value="" />
+            <br /><a href="#" class="click-all">Click all</a>
+            <label for="champion-matchup1-team1"></label><input type="hidden" id="champion-matchup1-team1" value="" />
         </div><!-- End .round -->
         
     </form>
@@ -323,7 +331,7 @@
 
 
 <!-- scripts -->
-<script src="/js/core.js"></script>
+<script src="js/core.js"></script>
 
 </body>    
 </html>
