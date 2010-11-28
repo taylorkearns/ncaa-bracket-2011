@@ -16,7 +16,7 @@
         div.round { float: left; width: 200px; }
         div.champion {float: right; margin-right: 30px; }
         div.matchup { margin-bottom: 10px; }
-        form label { display: block; }
+        form label { display: block; padding: 2px; margin-bottom: 2px; border: 1px solid #ccc; background: #eee; }
         h2 { font-size: 1.2em; }
         .loss { color: #f00; }
     </style>
@@ -326,7 +326,7 @@
 
 
 <!-- scripts -->
-<script src="/js/core.js"></script>
+<script src="js/core.js"></script>
 
 </body>    
 </html>
