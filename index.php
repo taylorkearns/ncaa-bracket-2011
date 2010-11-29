@@ -323,7 +323,9 @@
         <div class="champion">
             <h2>Champion</h2>
             <br /><a href="#" class="click-all">Click all</a>
-            <label for="champion-matchup1-team1"></label><input type="hidden" id="champion-matchup1-team1" value="" />
+            <div class="championship matchup">
+                <label for="champion-matchup1-team1"></label><input type="hidden" id="champion-matchup1-team1" value="" />
+            </div>
         </div><!-- End .round -->
         
     </form>
