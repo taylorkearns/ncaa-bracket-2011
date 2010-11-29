@@ -49,6 +49,40 @@ function getNextTeam(matchup)
 
 
 
+function getFutureRounds(id)
+{
+    round = id.split('-')[0];
+    for(i = 0; i < rounds.length; i++)
+    {
+        if(rounds[i] != rounds.length - 1)
+        {
+            if(rounds[i] == round)
+            {
+                var round_pos = i;
+                if(round_pos + 2 < rounds.length)
+                {
+                    var fut_rds = [];
+                    for(j = round_pos + 2; j < rounds.length; j++)
+                    {
+                        fut_rds.push(rounds[j]);
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        else
+        {
+            break;
+        }
+    }
+    return fut_rds;
+}
+
+
+
 /* ==================================================================== */
 // ON READY
 /* ==================================================================== */
@@ -58,19 +92,20 @@ $(document).ready(function()
     /* ==================================================================== */
     // BRACKET PICKS CONTROLS
     /* ==================================================================== */
-    
-    $('div.matchup label').click(function()
+    $('div.matchup label').click(function(event)
     {
         var selected_team_name = $(this).text();
         var selected_input = $(this).next('input[type="hidden"]');
         var selected_val = selected_input.val();
         var target_input = getTargetFromId(selected_input.attr('id'));
         var target_label = target_input.prev('label');
-               
+
         // Set the values
         target_input.attr('value', selected_val);
         target_label.text(selected_team_name);
         
+        var all_picks = $('div.matchup label').filter(function() { return $(this).text() == selected_team_name; });
+        var future_rounds = getFutureRounds(selected_input.attr('id'));
     });
     
     // END BRACKET PICKS CONTROLS
@@ -92,8 +127,6 @@ $(function()
     });
 });
 
-
-
-// FOR TESTING PURPOSES ONLY
+// END FOR TESTING PURPOSES ONLY
 
 
