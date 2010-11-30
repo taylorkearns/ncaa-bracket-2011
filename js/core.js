@@ -83,6 +83,27 @@ function getFutureRounds(id)
 
 
 
+function getPreviousRounds(id)
+{
+    round = id.split('-')[0];
+    for(i = 0; i < rounds.length; i++)
+    {
+        if(rounds[i] == round)
+        {
+            var round_pos = i;
+            var previous_rounds = [];
+            while(i >= 0)
+            {
+                previous_rounds.push(rounds[i]);
+                i--;
+            }
+        }
+    }
+    return previous_rounds;
+}
+
+
+
 /* ==================================================================== */
 // ON READY
 /* ==================================================================== */
@@ -104,8 +125,12 @@ $(document).ready(function()
         target_input.attr('value', selected_val);
         target_label.text(selected_team_name);
         
-        var all_picks = $('div.matchup label').filter(function() { return $(this).text() == selected_team_name; });
-        var future_rounds = getFutureRounds(selected_input.attr('id'));
+        var all_picks_labels = $('div.matchup label').filter(function() { return $(this).text() == selected_team_name; });
+        var all_picks_inputs = all_picks_labels.next('input[type="hidden"]');
+        all_picks_labels.text('');
+        all_picks_inputs.attr('value', '');
+        //var previous_rounds = getPreviousRounds(selected_input.attr('id')); -- working on this
+        //var future_rounds = getFutureRounds(selected_input.attr('id')); -- working on this
     });
     
     // END BRACKET PICKS CONTROLS
