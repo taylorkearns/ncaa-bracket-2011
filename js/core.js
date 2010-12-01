@@ -61,10 +61,10 @@ function getFutureRounds(id)
                 var round_pos = i;
                 if(round_pos + 2 < rounds.length)
                 {
-                    var fut_rds = [];
+                    var future_rounds = [];
                     for(j = round_pos + 2; j < rounds.length; j++)
                     {
-                        fut_rds.push(rounds[j]);
+                        future_rounds.push(rounds[j]);
                     }
                 }
                 else
@@ -78,28 +78,31 @@ function getFutureRounds(id)
             break;
         }
     }
-    return fut_rds;
+    return future_rounds;
 }
 
 
 
-function getPreviousRounds(id)
+function getTargetPrevVal(target, selected)
 {
-    round = id.split('-')[0];
-    for(i = 0; i < rounds.length; i++)
+    var target_prev_val = null;
+    if(target != selected && target != '')
     {
-        if(rounds[i] == round)
-        {
-            var round_pos = i;
-            var previous_rounds = [];
-            while(i >= 0)
-            {
-                previous_rounds.push(rounds[i]);
-                i--;
-            }
-        }
+        target_prev_val = target;
     }
-    return previous_rounds;
+    return target_prev_val;
+}
+
+
+
+function getTargetPrevLabel(target, selected)
+{
+    var target_prev_label = null;
+    if(target != selected && target != '')
+    {
+        var target_prev_label = target;
+    }
+    return target_prev_label;
 }
 
 
@@ -120,17 +123,28 @@ $(document).ready(function()
         var selected_val = selected_input.val();
         var target_input = getTargetFromId(selected_input.attr('id'));
         var target_label = target_input.prev('label');
+        var future_rounds = getFutureRounds(selected_input.attr('id'));
 
-        // Set the values
+        // Store the  target previous values (null if no previous value).
+        var target_prev_val = getTargetPrevVal(target_input.val(), selected_val);
+        var target_prev_label = getTargetPrevLabel(target_label.text(), selected_team_name);
+        
+        // Set the values.
         target_input.attr('value', selected_val);
         target_label.text(selected_team_name);
         
-        var all_picks_labels = $('div.matchup label').filter(function() { return $(this).text() == selected_team_name; });
-        var all_picks_inputs = all_picks_labels.next('input[type="hidden"]');
-        all_picks_labels.text('');
-        all_picks_inputs.attr('value', '');
-        //var previous_rounds = getPreviousRounds(selected_input.attr('id')); -- working on this
-        //var future_rounds = getFutureRounds(selected_input.attr('id')); -- working on this
+        // Get the labels that have the same text as the target's previous label text.
+        $('div.matchup label').filter(function() { return $(this).text() == target_prev_label; }).each(function()
+        {
+            // Get the round.
+            var round = $(this).next('input').attr('id').split('-')[0];            
+            // If the round is in the future_rounds array, clear the text and corresponding input value.
+            if($.inArray(round, future_rounds) != -1)
+            {
+                $(this).text('');
+                $(this).next('input').attr('value', '');
+            }
+        });
     });
     
     // END BRACKET PICKS CONTROLS
