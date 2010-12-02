@@ -13,10 +13,10 @@
 
     <style type="text/css">
         body { font-size: 62.5%; }
-        div.round { float: left; width: 100px; height: 600px; overflow: auto; margin-right: 30px; }
+        div.round { float: left; width: 100px; margin-right: 30px; }
         div.champion {float: right; margin-right: 30px; }
         div.matchup { margin-bottom: 10px; }
-        form label { display: block; padding: 2px; margin-bottom: 2px; border: 1px solid #ccc; background: #eee; width: 40px; }
+        form label { display: block; padding: 2px; margin-bottom: 2px; border: 1px solid #ccc; background: #eee; width: 40px; height: 12px; }
         form label:hover { background: #ccc; }
         h2 { font-size: 1.2em; }
     </style>
